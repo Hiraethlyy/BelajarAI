@@ -96,9 +96,6 @@ export default function HomePage() {
               ))}
             </div>
 
-            <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
-              Full case studies land here next
-            </p>
           </div>
         </section>
 

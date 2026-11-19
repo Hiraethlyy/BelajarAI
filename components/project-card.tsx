@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { Project } from "@/content/projects";
 
 type ProjectCardProps = {
@@ -6,14 +8,18 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group border-t border-line py-10 transition-colors duration-300 hover:border-accent md:py-12">
-      <div className="flex flex-col gap-8 md:flex-row md:gap-12">
-        <span className="font-mono text-[11px] tracking-[0.22em] text-muted">
+    <article className="border-t border-line">
+      <Link
+        href={`/work/${project.slug}`}
+        aria-label={`Read the case study: ${project.title}`}
+        className="group flex flex-col gap-8 py-10 transition-colors duration-300 hover:border-accent md:flex-row md:gap-12 md:py-12"
+      >
+        <span className="font-mono text-[11px] tracking-[0.22em] text-muted transition-colors group-hover:text-accent">
           {project.index}
         </span>
 
         <div className="flex-1">
-          <h3 className="max-w-xl text-2xl leading-[1.1] font-medium tracking-tight text-paper md:text-3xl">
+          <h3 className="max-w-xl text-2xl leading-[1.1] font-medium tracking-tight text-paper transition-colors group-hover:text-accent md:text-3xl">
             {project.title}
           </h3>
           <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
@@ -32,6 +38,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
               </li>
             ))}
           </ul>
+          <span className="mt-7 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-paper/60 transition-colors group-hover:text-accent">
+            Read case study <span aria-hidden>→</span>
+          </span>
         </div>
 
         <dl className="flex gap-10 md:w-56 md:flex-col md:gap-5">
@@ -44,7 +53,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
           ))}
         </dl>
-      </div>
+      </Link>
     </article>
   );
 }
